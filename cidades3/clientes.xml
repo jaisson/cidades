@@ -1,0 +1,36 @@
+<cidades>
+  <cidade codigo="1" nome="Ibirubá" uf="RS">
+    <cliente>
+      <matricula>1745</matricula>
+      <nome>João da Silva</nome>
+      <nascimento>11/01/1990</nascimento>
+    </cliente>
+    <cliente>
+      <matricula>1988</matricula>
+      <nome>Felipe da Silveira</nome>
+      <nascimento>11/05/1983</nascimento>
+    </cliente>
+    <cliente>
+      <matricula>1788</matricula>
+      <nome>Renata da Silva</nome>
+      <nascimento>10/01/1991</nascimento>
+    </cliente>
+  </cidade>
+  <cidade codigo="2" nome="Soledade" uf="RS">
+    <cliente>
+      <matricula>1966</matricula>
+      <nome>Pedro da Silva</nome>
+      <nascimento>15/05/1990</nascimento>
+    </cliente>
+    <cliente>
+      <matricula>1967</matricula>
+      <nome>Dimas Oliveira</nome>
+      <nascimento>11/05/1988</nascimento>
+    </cliente>
+    <cliente>
+      <matricula>1968</matricula>
+      <nome>Bianca de Medeiros</nome>
+      <nascimento>10/01/1997</nascimento>
+    </cliente>
+  </cidade>
+</cidades>
