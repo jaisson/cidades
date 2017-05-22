@@ -16,7 +16,7 @@ public class PopulaBDImpl implements PopulaBD {
 
   @Override
   public void populaBD(List<Cidade> cidades) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    CidadeDAO.inserirCidades(cidades);
   }
 
 }

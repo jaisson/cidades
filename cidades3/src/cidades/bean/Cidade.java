@@ -5,6 +5,8 @@
  */
 package cidades.bean;
 
+import java.util.List;
+
 /**
  *
  * @author linuxifrs
@@ -14,14 +16,16 @@ public class Cidade {
   private Integer codigo;
   private String nome;
   private String uf;
+  private List<Cliente> clientes;
 
   public Cidade() {
   }
 
-  public Cidade(Integer codigo, String nome, String uf) {
+  public Cidade(Integer codigo, String nome, String uf, List<Cliente> clientes) {
     this.codigo = codigo;
     this.nome = nome;
     this.uf = uf;
+    this.clientes = clientes;
   }
 
   public Integer getCodigo() {
@@ -46,6 +50,14 @@ public class Cidade {
 
   public void setUf(String uf) {
     this.uf = uf;
+  }
+
+  public List<Cliente> getClientes() {
+    return clientes;
+  }
+
+  public void setClientes(List<Cliente> clientes) {
+    this.clientes = clientes;
   }
 
 }

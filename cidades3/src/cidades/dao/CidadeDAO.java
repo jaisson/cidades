@@ -30,6 +30,7 @@ public class CidadeDAO {
           psmt.setInt(1, cidade.getCodigo());
           psmt.setString(2, cidade.getNome());
           psmt.setString(3, cidade.getUf());
+          ClienteDAO.inserirClientes(cidade.getClientes(), cidade);
           psmt.addBatch();
         }
         psmt.executeBatch();

@@ -16,17 +16,6 @@ public class Cliente {
   private Integer matricula;
   private String nome;
   private Date nascimento;
-  private Cidade cidade;
-
-  public Cliente() {
-  }
-
-  public Cliente(Integer matricula, String nome, Date nascimento, Cidade cidade) {
-    this.matricula = matricula;
-    this.nome = nome;
-    this.nascimento = nascimento;
-    this.cidade = cidade;
-  }
 
   public Integer getMatricula() {
     return matricula;
@@ -52,12 +41,13 @@ public class Cliente {
     this.nascimento = nascimento;
   }
 
-  public Cidade getCidade() {
-    return cidade;
+  public Cliente() {
   }
 
-  public void setCidade(Cidade cidade) {
-    this.cidade = cidade;
+  public Cliente(Integer matricula, String nome, Date nascimento) {
+    this.matricula = matricula;
+    this.nome = nome;
+    this.nascimento = nascimento;
   }
 
 }
