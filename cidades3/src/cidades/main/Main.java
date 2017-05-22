@@ -27,10 +27,6 @@ public class Main {
     System.out.println("Lendo o XML");
     LerXML lx = new LerXMLImpl();
     List<Cidade> cidades = lx.lerCidades(arquivo);
-    
-    for(Cidade cidade : cidades) {
-      System.out.println(cidade.getNome());
-    }
 
     System.out.println("Inserindo no arquivo");
     PopulaBD pb = new PopulaBDImpl();

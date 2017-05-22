@@ -25,16 +25,21 @@ public class CidadeDAO {
       try (Connection conn = Conexao.createConnection()) {
         conn.setAutoCommit(false);
         PreparedStatement psmt = conn.prepareStatement(sql);
-        
+
         for (Cidade cidade : cidades) {
           psmt.setInt(1, cidade.getCodigo());
           psmt.setString(2, cidade.getNome());
           psmt.setString(3, cidade.getUf());
-          ClienteDAO.inserirClientes(cidade.getClientes(), cidade);
           psmt.addBatch();
         }
         psmt.executeBatch();
         conn.commit();
+
+        System.out.println("inserir pessoas");
+        for (Cidade cidade : cidades) {
+          System.out.println(cidade.getNome());
+          //ClienteDAO.inserirClientes(cidade.getClientes(), cidade);
+        }
       }
     } catch (SQLException ex) {
       Logger.getLogger(CidadeDAO.class.getName()).log(Level.SEVERE, null, ex);
