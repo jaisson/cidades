@@ -24,7 +24,7 @@ public class Main {
     List<Cidade> cidades = lx.lerCidades("caminho para o XML");
 
     System.out.println("Inserindo no arquivo");
-    PopulaBD pb = new PopulaBDImpl();
-    pb.populaBD(cidades);
+    //PopulaBD pb = new PopulaBDImpl();
+    //pb.populaBD(cidades);
   }
 }
