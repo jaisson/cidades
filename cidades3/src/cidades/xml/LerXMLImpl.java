@@ -34,7 +34,7 @@ public class LerXMLImpl extends LerXML {
   @Override
   public List<Cidade> lerCidades(String pathXML) {
     try {
-      BufferedReader lerArq = new BufferedReader(new InputStreamReader(new FileInputStream(new File("").getCanonicalPath() + "/clientes.xml"), "ISO-8859-1"));
+      BufferedReader lerArq = new BufferedReader(new InputStreamReader(new FileInputStream(pathXML), "ISO-8859-1"));
       SAXBuilder sb = new SAXBuilder();
       Document document = sb.build(lerArq);
 
@@ -49,13 +49,6 @@ public class LerXMLImpl extends LerXML {
       SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
       while (i.hasNext()) {
         Element element = (Element) i.next();
-        Integer codigo = Integer.parseInt(element.getAttributeValue("codigo"));
-        String nome = element.getAttributeValue("nome");
-        String uf = element.getAttributeValue("uf");
-        Cidade cidade = new Cidade(codigo, nome, uf);
-
-        cids.add(cidade);
-
         List clientes = element.getChildren();
         Iterator cli = clientes.iterator();
 
@@ -66,11 +59,19 @@ public class LerXMLImpl extends LerXML {
           String dataXml = elemCli.getChildText("nascimento");
 
           java.sql.Date nascimento = new java.sql.Date(format.parse(dataXml).getTime());
-          Cliente c = new Cliente(matricula, nomeCliente, nascimento, cidade);
+          Cliente c = new Cliente(matricula, nomeCliente, nascimento);
 
           clis.add(c);
         }
+
+        Integer codigo = Integer.parseInt(element.getAttributeValue("codigo"));
+        String nome = element.getAttributeValue("nome");
+        String uf = element.getAttributeValue("uf");
+        Cidade cidade = new Cidade(codigo, nome, uf, clis);
+
+        cids.add(cidade);
       }
+      return cids;
     } catch (UnsupportedEncodingException ex) {
       Logger.getLogger(LerXMLImpl.class.getName()).log(Level.SEVERE, null, ex);
     } catch (IOException ex) {

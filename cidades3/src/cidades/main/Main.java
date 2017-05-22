@@ -11,6 +11,7 @@ import cidades.dao.PopulaBDImpl;
 import cidades.xml.LerXML;
 import cidades.xml.LerXMLImpl;
 import java.util.List;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -19,12 +20,20 @@ import java.util.List;
 public class Main {
 
   public static void main(String[] args) {
+    JFileChooser chooserArquivo = new JFileChooser();
+    int escolha = chooserArquivo.showOpenDialog(chooserArquivo.getParent());
+    String arquivo = chooserArquivo.getSelectedFile().getAbsolutePath();
+    
     System.out.println("Lendo o XML");
     LerXML lx = new LerXMLImpl();
-    List<Cidade> cidades = lx.lerCidades("caminho para o XML");
+    List<Cidade> cidades = lx.lerCidades(arquivo);
+    
+    for(Cidade cidade : cidades) {
+      System.out.println(cidade.getNome());
+    }
 
     System.out.println("Inserindo no arquivo");
-    //PopulaBD pb = new PopulaBDImpl();
-    //pb.populaBD(cidades);
+    PopulaBD pb = new PopulaBDImpl();
+    pb.populaBD(cidades);
   }
 }
