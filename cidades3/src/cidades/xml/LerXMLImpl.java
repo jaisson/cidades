@@ -63,7 +63,6 @@ public class LerXMLImpl extends LerXML {
 
           java.sql.Date nascimento = new java.sql.Date(format.parse(dataXml).getTime());
           Cliente c = new Cliente(matricula, nomeCliente, nascimento);
-          System.out.println("cliente: " + nomeCliente + ", cidade: " + nome);
           clis.add(c);
         }
         Cidade cidade = new Cidade(codigo, nome, uf, clis);
