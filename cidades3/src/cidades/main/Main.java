@@ -23,12 +23,11 @@ public class Main {
     JFileChooser chooserArquivo = new JFileChooser();
     int escolha = chooserArquivo.showOpenDialog(chooserArquivo.getParent());
     String arquivo = chooserArquivo.getSelectedFile().getAbsolutePath();
-    
+
     System.out.println("Lendo o XML");
     LerXML lx = new LerXMLImpl();
     List<Cidade> cidades = lx.lerCidades(arquivo);
 
-    System.out.println("Inserindo no arquivo");
     PopulaBD pb = new PopulaBDImpl();
     pb.populaBD(cidades);
   }

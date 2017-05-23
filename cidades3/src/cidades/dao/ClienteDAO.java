@@ -18,20 +18,26 @@ import java.util.List;
  */
 public class ClienteDAO {
 
-  public static void inserirClientes(List<Cliente> clientes, Cidade cidade) {
+  public static void inserirClientes(List<Cidade> cidades) {
     try {
       String sql = "insert into cliente (matricula, nome, nascimento, cidade) values (?, ?, ?, ?)";
       try (Connection conn = Conexao.createConnection()) {
         conn.setAutoCommit(false);
-        PreparedStatement psmt = conn.prepareStatement(sql);
-        for (Cliente cliente : clientes) {
-          psmt.setInt(1, cliente.getMatricula());
-          psmt.setString(2, cliente.getNome());
-          psmt.setDate(3, cliente.getNascimento());
-          psmt.setInt(4, cidade.getCodigo());
-          psmt.addBatch();
+        try (PreparedStatement psmt = conn.prepareStatement(sql)) {
+          for (Cidade cidade : cidades) {
+            Integer cid = cidade.getCodigo();
+            List<Cliente> clientes = cidade.getClientes();
+            for (Cliente cliente : clientes) {
+              psmt.setInt(1, cliente.getMatricula());
+              psmt.setString(2, cliente.getNome());
+              psmt.setDate(3, cliente.getNascimento());
+              psmt.setInt(4, cid);
+              psmt.addBatch();
+            }
+          }
+
+          psmt.executeBatch();
         }
-        psmt.executeBatch();
         conn.commit();
       }
     } catch (SQLException ex) {

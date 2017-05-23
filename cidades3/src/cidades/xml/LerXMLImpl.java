@@ -44,14 +44,17 @@ public class LerXMLImpl extends LerXML {
 
       Iterator i = elements.iterator();
       ArrayList<Cidade> cids = new ArrayList<>();
-      ArrayList<Cliente> clis = new ArrayList<>();
 
       SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
       while (i.hasNext()) {
         Element element = (Element) i.next();
+        Integer codigo = Integer.parseInt(element.getAttributeValue("codigo"));
+        String nome = element.getAttributeValue("nome");
+        String uf = element.getAttributeValue("uf");
+
         List clientes = element.getChildren();
         Iterator cli = clientes.iterator();
-
+        ArrayList<Cliente> clis = new ArrayList<>();
         while (cli.hasNext()) {
           Element elemCli = (Element) cli.next();
           Integer matricula = Integer.parseInt(elemCli.getChildText("matricula"));
@@ -60,16 +63,12 @@ public class LerXMLImpl extends LerXML {
 
           java.sql.Date nascimento = new java.sql.Date(format.parse(dataXml).getTime());
           Cliente c = new Cliente(matricula, nomeCliente, nascimento);
-
+          System.out.println("cliente: " + nomeCliente + ", cidade: " + nome);
           clis.add(c);
         }
-
-        Integer codigo = Integer.parseInt(element.getAttributeValue("codigo"));
-        String nome = element.getAttributeValue("nome");
-        String uf = element.getAttributeValue("uf");
         Cidade cidade = new Cidade(codigo, nome, uf, clis);
-
         cids.add(cidade);
+
       }
       return cids;
     } catch (UnsupportedEncodingException ex) {
