@@ -47,7 +47,7 @@ public class CandidatoDAO {
                 rs.getString("cpf"),
                 rs.getString("sexo"),
                 rs.getDate("dtnascimento"),
-                rs.getInt("ocupacao")));
+                new Ocupacao(rs.getInt("ocupacao"), "")));
       }
 
       rs.close();

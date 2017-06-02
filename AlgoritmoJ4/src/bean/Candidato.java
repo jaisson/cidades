@@ -18,12 +18,12 @@ public class Candidato {
   private String cpf;
   private String sexo;
   private Date dtNascimento;
-  private Integer ocupacao;
+  private Ocupacao ocupacao;
 
   public Candidato() {
   }
 
-  public Candidato(String sequencial, String nome, String cpf, String sexo, Date dtNascimento, Integer ocupacao) {
+  public Candidato(String sequencial, String nome, String cpf, String sexo, Date dtNascimento, Ocupacao ocupacao) {
     this.sequencial = sequencial;
     this.nome = nome;
     this.cpf = cpf;
@@ -72,11 +72,11 @@ public class Candidato {
     this.dtNascimento = dtNascimento;
   }
 
-  public Integer getOcupacao() {
+  public Ocupacao getOcupacao() {
     return ocupacao;
   }
 
-  public void setOcupacao(Integer ocupacao) {
+  public void setOcupacao(Ocupacao ocupacao) {
     this.ocupacao = ocupacao;
   }
 
