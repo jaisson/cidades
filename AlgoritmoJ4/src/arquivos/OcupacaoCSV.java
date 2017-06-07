@@ -6,12 +6,8 @@
 package arquivos;
 
 import bean.Ocupacao;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import uteis.Utilitario;
 
 /**
  *
@@ -20,15 +16,10 @@ import java.util.logging.Logger;
 public class OcupacaoCSV {
 
   public static void criarOcupacaoCSVS(ArrayList<Ocupacao> ocupacoes) {
-    try {
-      FileWriter writer = new FileWriter(new File(new File("").getCanonicalPath() + "/arquivos/") + "ocupacao.csv");
-
-      for (Ocupacao ocupacao : ocupacoes) {
-        writer.write(ocupacao.getCodigo() + ";" + ocupacao.getDescricao() + "\n");
-      }
-      writer.close();
-    } catch (IOException ex) {
-      Logger.getLogger(CandidatoCSV.class.getName()).log(Level.SEVERE, null, ex);
+    for (Ocupacao ocupacao : ocupacoes) {
+      String conteudo = ocupacao.getCodigo() + ";"
+              + Utilitario.removeAcentos(ocupacao.getDescricao());
+      UtilCSV.salvar(ocupacao.hash(ocupacao.getCodigo()) + ".csv", conteudo, true);
     }
   }
 }

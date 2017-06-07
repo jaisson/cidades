@@ -50,7 +50,7 @@ public class OcupacaoDAO {
       PreparedStatement ps = conn.prepareStatement(sql);
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
-        ocupacoes.add(new Ocupacao(rs.getInt("CODIGO"), rs.getString("DESCRICAO")));
+        ocupacoes.add(new Ocupacao(rs.getInt("CODIGO"), rs.getString("DESCRICAO").replace(";", "")));
       }
 
       rs.close();

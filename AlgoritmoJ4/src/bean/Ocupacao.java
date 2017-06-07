@@ -20,7 +20,7 @@ public class Ocupacao {
   }
 
   public Ocupacao(Integer codigo, String descricao) {
-    this.codigo = hash(codigo);
+    this.codigo = codigo;
     this.descricao = descricao;
   }
 
@@ -29,7 +29,7 @@ public class Ocupacao {
   }
 
   public void setCodigo(Integer codigo) {
-    this.codigo = hash(codigo);
+    this.codigo = codigo;
   }
 
   public String getDescricao() {
@@ -40,7 +40,7 @@ public class Ocupacao {
     this.descricao = descricao;
   }
 
-  private int hash(int key) {
+  public int hash(int key) {
     return key % (OcupacaoDAO.getTotalOcupacao() / 10);
   }
 }
