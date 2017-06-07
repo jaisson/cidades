@@ -22,7 +22,7 @@ public class CandidatoCSV {
 
   public static void criarCandidatoCVS(ArrayList<Candidato> candidatos) {
     try {
-      try (FileWriter writer = new FileWriter(new File(new File("").getCanonicalPath() + "/") + "candidato.csv")) {
+      try (FileWriter writer = new FileWriter(new File(new File("").getCanonicalPath() + "/candidato.csv"))) {
         for (Candidato candidato : candidatos) {
           writer.write(
                   candidato.getSequencial() + ";"
