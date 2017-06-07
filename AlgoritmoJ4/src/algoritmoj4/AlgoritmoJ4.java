@@ -5,7 +5,9 @@
  */
 package algoritmoj4;
 
+import arquivos.CandidatoCSV;
 import arquivos.OcupacaoCSV;
+import dao.CandidatoDAO;
 import dao.OcupacaoDAO;
 
 /**
@@ -18,11 +20,11 @@ public class AlgoritmoJ4 {
    * @param args the command line arguments
    */
   public static void main(String[] args) {
-    //CandidatoDAO candidatoDAO = new CandidatoDAO();
-    //CandidatoCSV.criarCandidatoCVS(candidatoDAO.getAllCandidato());
-
     OcupacaoDAO ocupacaoDAO = new OcupacaoDAO();
     OcupacaoCSV.criarOcupacaoCSVS(ocupacaoDAO.getAllOcupacao());
+
+    CandidatoDAO candidatoDAO = new CandidatoDAO();
+    CandidatoCSV.criarCandidatoCVS(candidatoDAO.getAllCandidato());
 
   }
 

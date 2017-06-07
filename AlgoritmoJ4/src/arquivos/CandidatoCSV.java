@@ -6,6 +6,7 @@
 package arquivos;
 
 import bean.Candidato;
+import bean.Ocupacao;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -21,14 +22,14 @@ public class CandidatoCSV {
 
   public static void criarCandidatoCVS(ArrayList<Candidato> candidatos) {
     try {
-      try (FileWriter writer = new FileWriter(new File(new File("").getCanonicalPath() + "/arquivos/") + "candidato.csv")) {
+      try (FileWriter writer = new FileWriter(new File(new File("").getCanonicalPath() + "/") + "candidato.csv")) {
         for (Candidato candidato : candidatos) {
           writer.write(
                   candidato.getSequencial() + ";"
                   + candidato.getNome() + ";"
                   + candidato.getSexo() + ";"
                   + candidato.getDtNascimento() + ";"
-                  + candidato.getOcupacao().getCodigo() + "\n");
+                  + Ocupacao.hash(candidato. getOcupacao().getCodigo()) + "\n");
         }
       }
     } catch (IOException ex) {

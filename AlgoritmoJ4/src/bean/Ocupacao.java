@@ -40,7 +40,7 @@ public class Ocupacao {
     this.descricao = descricao;
   }
 
-  public int hash(int key) {
+  public static int hash(int key) {
     return key % (OcupacaoDAO.getTotalOcupacao() / 10);
   }
 }
