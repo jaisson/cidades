@@ -27,9 +27,11 @@ public class CandidatoCSV {
           writer.write(
                   candidato.getSequencial() + ";"
                   + candidato.getNome() + ";"
+                  + candidato.getCpf() + ";"
                   + candidato.getSexo() + ";"
                   + candidato.getDtNascimento() + ";"
-                  + Ocupacao.hash(candidato. getOcupacao().getCodigo()) + "\n");
+                  + candidato.getOcupacao().getCodigo() + ";"
+                  + Ocupacao.hash(candidato.getOcupacao().getCodigo()) + "\n");
         }
       }
     } catch (IOException ex) {
